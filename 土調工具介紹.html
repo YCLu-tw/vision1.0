@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>工具介紹網站</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <h1>工具介紹網站</h1>
+    
+    <!-- 圖片展示區 -->
+    <div class="image-container">
+        <img src="images/test.JPG" alt="工具圖片" usemap="#toolmap">
+        <!-- 定義圖片熱區 -->
+        <map name="toolmap">
+            <area shape="rect" coords="157,1138,360,1495" alt="土鑽" href="#" onclick="showInfo('tool1', event)">
+            <area shape="circle" coords="406,991,32" alt="孟氏色帖" href="#" onclick="showInfo('tool2', event)">
+	    <area shape="poly" coords="564,983,418,932,688,860,859,876" alt="土壤剖面" href="#" onclick="showInfo('tool3', event)">
+            <!-- 根據圖片工具的位置添加更多熱區 -->
+        </map>
+    </div>
+
+    <!-- 對話框區域 -->
+    <div id="dialog-box" class="dialog-box">
+        <span id="close-btn" class="close-btn" onclick="hideInfo()">X</span>
+        <svg id="line" class="line" height="100%" width="100%">
+        <line x1="0" y1="0" x2="0" y2="0" stroke="black" stroke-width="2" />
+        </svg>
+        <p id="dialog-content"></p>
+    </div>
+
+
+    <script src="scripts.js"></script>
+</body>
+</html>

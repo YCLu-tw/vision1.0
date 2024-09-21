@@ -1,0 +1,44 @@
+/* 頁面基本樣式 */
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+}
+
+.image-container img {
+    max-height: 100%; /* 圖片寬度不超過容器 */
+    width: auto;    /* 保持圖片的比例 */
+}
+
+.dialog-box {
+    display: none; /* 初始隱藏 */
+    position: absolute;
+    background-color: #fff;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+    border-radius: 8px;
+    width: 300px;
+}
+
+.line {
+    position: absolute;
+    pointer-events: none; /* 防止干擾到鼠標事件 */
+    stroke: black;
+    stroke-width: 2;
+    top: 0;
+    left: 0;
+}
+
+#dialog-content {
+    font-size: 16px;
+    text-align: left;
+}
+
+.close-btn {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    cursor: pointer;
+    font-weight: bold;
+    color: red;
+}

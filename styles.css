@@ -5,8 +5,8 @@ body {
 }
 
 .image-container img {
-    max-height: 100%; /* 圖片寬度不超過容器 */
-    width: auto;    /* 保持圖片的比例 */
+    max-width: 100%; /* 圖片寬度不超過容器 */
+    height: auto;    /* 保持圖片的比例 */
 }
 
 .dialog-box {

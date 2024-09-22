@@ -29,22 +29,62 @@ function showInfo(toolId, event) {
     
     content.innerHTML = toolInfo[toolId] || "<p>沒有找到該工具的介紹。</p>";
 
-    const xPos = event.pageX;
-    const yPos = event.pageY;
+ // 檢查是否是觸摸事件，並獲取正確的點擊位置
+    let xPos, yPos;
+    if (event.type === 'touchstart' || event.type === 'touchend') {
+        xPos = event.changedTouches[0].pageX;
+        yPos = event.changedTouches[0].pageY;
+    } else {
+        xPos = event.pageX;
+        yPos = event.pageY;
+    }
 
-    dialog.style.left = xPos + 25 + "px"; // 讓對話框位於點擊點右側一點
-    dialog.style.top = yPos + 25 + "px";  // 讓對話框位於點擊點下方一點
-    dialog.style.display = "block";
+    // 調整對話框位置以避免超出視窗，並讓其位於點擊位置的上方
+    const dialogWidth = dialog.offsetWidth;
+    const dialogHeight = dialog.offsetHeight;
+    const windowWidth = window.innerWidth;
+    const windowHeight = window.innerHeight;
 
+    // 默認位置：對話框出現在點擊區的上方
+    let left = xPos - dialogWidth / 2; // 水平居中
+    let top = yPos - dialogHeight - 20; // 垂直在點擊區上方 20px
+
+    // 防止對話框超出左右邊界
+    if (left < 0) {
+        left = 10; // 保持至少有 10px 的間距
+    } else if (left + dialogWidth > windowWidth) {
+        left = windowWidth - dialogWidth - 10; // 保持至少有 10px 的間距
+    }
+
+    // 如果對話框超出上邊界，將其放在點擊區下方
+    if (top < 0) {
+        top = yPos + 20; // 將其放在點擊區下方 20px
+    }
+
+    dialog.style.left = left + "px";
+    dialog.style.top = top + "px";
+    dialog.style.display = "block";  // 顯示對話框
+
+    // 設置連接線條的位置
     const dialogRect = dialog.getBoundingClientRect();
-    const dialogX = dialogRect.left + dialogRect.width / 2; // 對話框中心X座標
-    const dialogY = dialogRect.top; // 對話框頂部Y座標
+    const dialogX = dialogRect.left + dialogRect.width / 2 + window.scrollX; // 對話框中心X座標
+    const dialogY = dialogRect.top + window.scrollY; // 對話框頂部Y座標
 
     line.setAttribute("x1", dialogX); // 對話框中心
     line.setAttribute("y1", dialogY); // 對話框頂部
     line.setAttribute("x2", xPos); // 點擊位置X座標
     line.setAttribute("y2", yPos); // 點擊位置Y座標
 }
+
+// 添加對觸摸事件的支援
+document.querySelectorAll("area").forEach(area => {
+    area.addEventListener("touchstart", function(event) {
+        showInfo(area.alt, event);
+    });
+    area.addEventListener("click", function(event) {
+        showInfo(area.alt, event);
+    });
+});
 
 // 隱藏對話框
 function hideInfo() {

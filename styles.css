@@ -5,21 +5,19 @@ body {
 }
 
 .image-container img {
-    max-width: 100%; /* 圖片寬度不超過容器 */
-    height: auto;    /* 保持圖片的比例 */
+    max-height: 100%; /* 圖片寬度不超過容器 */
+    width: auto;    /* 保持圖片的比例 */
 }
 
 .dialog-box {
     display: none; /* 初始隱藏 */
     position: absolute;
-    background-color: white;
-    border: 1px solid black;
-    padding: 10px;
-    border-radius: 5px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-    display: none;
-    max-width: 90%; /* 保證在手機上不超過螢幕寬度 */
-    word-wrap: break-word;
+    background-color: #fff;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+    border-radius: 8px;
+    width: 300px;
 }
 
 .line {

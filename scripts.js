@@ -1,19 +1,20 @@
 // 對話框的工具描述
 const toolInfo = {
     tool1: `
-        <p style="text-align: center; font-size: 18px; font-weight: bold;">土鑽</p>
+        <p style="text-align: center; font-size: 30px; font-weight: bold;">土鑽</p>
         <p>功能：用以蒐集土壤之採樣工具。</p>
         <p>用法：將鑽頭朝下垂直土壤表面後，雙手握緊手把以順時針方向轉動，到達目標深度後垂直取出土鑽即可。</p>
     `,
     tool2: `
-        <p style="text-align: center; font-size: 18px; font-weight: bold;">工具2介紹</p>
-        <p>這是工具2的第一個特點。</p>
-        <p>這是工具2的第二個特點。</p>
+        <p style="text-align: center; font-size: 30px; font-weight: bold;">孟氏色帖</p>
+        <p>功能：用於比較土壤顏色，可以初步研判其性質
+主要以色彩(hue)、 色值(value)和色度(chroma)三個面向表示，色彩可表示其中的成分，常用於土壤診斷；色值表示顏色的相對明暗，色值越大，顏色越亮；色度表示光譜的相對純度或強度，色度越小，白色成分居多。
+</p>
+        <p>用法：在照明良好且均勻一致的場所進行，直接以肉眼比色。</p>
     `,
     tool3: `
-        <p style="text-align: center; font-size: 18px; font-weight: bold;">工具3介紹</p>
-        <p>這是工具3的第一個特點。</p>
-        <p>這是工具3的第二個特點。</p>
+        <p style="text-align: center; font-size: 30px; font-weight: bold;">土壤剖面樣本</p>
+        <p>功能：用於參考土壤剖面化育層。每一個區域的樣本並非都有明顯的化育層分層，會因為各種因素而有差距，土壤剖面有助於建立土壤資料，搭配當地的地形氣候生物層等因素，可以判斷土壤的演化以及歷史。</p>
     `
     // 根據需要添加更多工具介紹
 };
@@ -31,8 +32,8 @@ function showInfo(toolId, event) {
     const xPos = event.pageX;
     const yPos = event.pageY;
 
-    dialog.style.left = xPos + 70 + "px"; // 讓對話框位於點擊點右側一點
-    dialog.style.top = yPos + 70 + "px";  // 讓對話框位於點擊點下方一點
+    dialog.style.left = xPos + 25 + "px"; // 讓對話框位於點擊點右側一點
+    dialog.style.top = yPos + 25 + "px";  // 讓對話框位於點擊點下方一點
     dialog.style.display = "block";
 
     const dialogRect = dialog.getBoundingClientRect();
